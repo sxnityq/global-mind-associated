@@ -1,9 +1,7 @@
 from os import getenv
 from dotenv import load_dotenv
 
-
-load_dotenv(dotenv_path="./.env")
-
+load_dotenv(dotenv_path="../.env")
 
 DB_NAME=getenv("PG_DB")
 DB_PASS=getenv("PG_PASS")

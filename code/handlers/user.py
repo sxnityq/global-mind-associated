@@ -28,7 +28,7 @@ class UserHandler:
         model           = UserModel.get_or_none(UserModel.id == user_id)
         
         if model is None:
-            return HTTPBadRequest(reason=f"Device with id {user_id} does not exist")
+            return HTTPBadRequest(reason=f"User with id {user_id} does not exist")
     
         devices = []
 
@@ -61,7 +61,7 @@ class UserHandler:
                         password=sha256(body.get("password").encode('utf-8')).hexdigest(),
                         email=body.get("email"))
             base64 = gen_base64(body.get("name"), body.get("password"))
-            return HTTPCreated(text=f"user created. Your base64 - {base64}")
+            return HTTPCreated(text=base64)
         except Exception as e:
             return HTTPBadRequest(body="user name or email already exist")
 
@@ -114,7 +114,7 @@ class UserHandler:
                           ).execute()
         
         new_base64=gen_base64(user_auth.login, user_auth.password)
-        return Response(text=f"user successfully updated. New base64 = {new_base64}")
+        return Response(text=new_base64)
     
 
     async def delete_user(self, request: Request):
