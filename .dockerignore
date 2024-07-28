@@ -1,0 +1,17 @@
+__pycache__/**/*/
+__pycache__
+
+
+*.pyc
+*.pyo
+*.pyd
+
+pgadmin4/**/*/
+pgadmin4
+
+pgdata/***/
+pgdata
+venv/**/*/
+venv
+
+.env

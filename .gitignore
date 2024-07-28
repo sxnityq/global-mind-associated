@@ -1,0 +1,10 @@
+**/__pycache__
+
+*.pyc
+*.pyo
+*.pyd
+
+pgadmin4
+pgdata
+venv
+.env

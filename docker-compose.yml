@@ -1,0 +1,50 @@
+services:
+  postgresql:
+    image: postgres
+    hostname: postgres
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${PG_PASS}
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_DB: ${PG_DB}
+    volumes:
+      - type: bind
+        source: ${PWD}/pgdata
+        target: /var/lib/postgresql/data
+        bind:
+          create_host_path: true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5432"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  pgadmin:
+    user: "0:0"
+    image: dpage/pgadmin4
+    ports:
+      - 9999:80
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_PASSWORD: ${PGADM_PASS}
+      PGADMIN_DEFAULT_EMAIL: ${PGADM_EMAIL}
+    volumes:
+      - type: bind
+        source: ${PWD}/pgadmin4
+        target: "/var/lib/pgadmin"
+        bind:
+          create_host_path: true
+    depends_on:
+      - postgresql
+
+  global_mind:
+    build: .
+    ports:
+      - 5050:5050
+    env_file:
+      - .env
+    restart: always
+    depends_on:
+      - postgresql
