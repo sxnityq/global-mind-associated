@@ -111,5 +111,3 @@ Ang get user again)
 `curl -X GET http://0.0.0.0:5050/user/get/18 -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp"`
 
 response - > {"name": "protein bar", "email": "theking@sportstyle.com", "devices": []}
-
-![](https://github.com/sxnityq/global-mind-associated/blob/main/readmeSrc/end.gif)
