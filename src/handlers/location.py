@@ -32,12 +32,12 @@ class LocationHandler:
         location_name = body.get("name")
         try:
             LocationScheme(**body)  
-            LocationModel.create(name=location_name)
+            location = LocationModel.create(name=location_name)
         except ValidationError as e:
             return HTTPBadRequest(text=e.json())
         except Exception as e:
             return HTTPBadRequest(reason=f"location {location_name} already exist")
-        return HTTPCreated(reason=f"location {location_name} successfully created")
+        return HTTPCreated(reason=f"location with id {location.id} successfully created")
     
     """PUT"""
     async def update_location(self, request: Request):

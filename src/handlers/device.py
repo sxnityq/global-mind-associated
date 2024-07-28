@@ -75,14 +75,14 @@ class DeviceHandler:
         if DeviceModel.get_or_none(DeviceModel.login == device_login) is not None:
             return HTTPBadRequest(reason=f"location with login {device_login} already exist")
 
-        DeviceModel.create(name=device_name, 
+        dev = DeviceModel.create(name=device_name, 
                            login=device_login,
                            password=device_password,
                            device_type=device_type,
                            location_id=location_id,
                            api_user_id=user.id)
         
-        return HTTPCreated(text=f"device with name {device_name} created")
+        return HTTPCreated(text=f"device with id  {dev.id} created")
     
 
     async def update_device(self, request: Request):

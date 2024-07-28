@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-COPY code /app/code
+COPY src /app/src
 COPY main.py /app/main.py
 COPY requirements.txt /app/requirements.txt
 WORKDIR /app

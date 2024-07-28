@@ -82,43 +82,33 @@ As we can see our user doesn't have devices. Let's create one. (Btw in example i
 
 First of all we have to create location or use existing one. For simplicity I will create one so don't worry.
 
-```bash
-curl -X POST http://0.0.0.0:5050/location/create -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp" -d '{"name": "secret as fuck"}'
-```
+`curl -X POST http://0.0.0.0:5050/location/create -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp" -d '{"name": "secret as fuck"}'`
 
-response - > 201: location secret as fuck successfully created
-**P.S perhaps It is better to response with ID instead of name 🫣**
+response - > 201: location with id 3 was successfully created
 
 Anyway lets move forward to create our device.
 
-```bash
-curl -X POST http://0.0.0.0:5050/device/create -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp" -d '{"name": "very awesome shrink ray", "location_id": 3, "type": "moon stiller", "login" : "despicable me 1", "password" : "Verysecretspy#1488)"}'
-```
+`curl -X POST http://0.0.0.0:5050/device/create -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp" -d '{"name": "very awesome shrink ray", "location_id": 3, "type": "moon stiller", "login" : "despicable me 1", "password" : "Verysecretspy#1488)"}'`
 
-response -> device with name very awesome shrink ray created
+response -> device with id 4 was created
 
 #### Aaaaaaand Let's fetch our homie again
 
-```bash
-curl -X GET http://0.0.0.0:5050/user/get/18 -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp"
-```
+`curl -X GET http://0.0.0.0:5050/user/get/18 -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp" `
 
 response -> {"name": "protein bar", "email": "theking@sportstyle.com", "devices": [{"id": 4, "name": "very awesome shrink ray", "device_type": "moon stiller", "login": "despicable me 1", "location_id": 3, "api_user_id": 18}]}
+
 Now we can see our new device is inside devices list. Cool? Cool as fuck (⌐■_■)
 
 #### delete device
 
 Well only by losing everything do we gain freedom. Let's clean up shrink tay
 
-```bash
-curl -X DELETE http://0.0.0.0:5050/device/delete/4  -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp"
-```
+`curl -X DELETE http://0.0.0.0:5050/device/delete/4  -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp" `
 
 Ang get user again)
 
-```bash
-curl -X GET http://0.0.0.0:5050/user/get/18 -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp"
-```
+`curl -X GET http://0.0.0.0:5050/user/get/18 -H "Content-Type: application/json" -H "Authorization: Basic cHJvdGVpbiBiYXI6SXVzZWFyY2hidHcxXiYp"`
 
 response - > {"name": "protein bar", "email": "theking@sportstyle.com", "devices": []}
-![](https://tenor.com/view/one-piece-franky-franky-one-piece-gif-24670930)
+![](https://github.com/sxnityq/global-mind-associated/readmeSrc/end.gif)

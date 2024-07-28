@@ -64,11 +64,12 @@ class UserHandler:
             return HTTPCreated(text=base64)
         except Exception as e:
             return HTTPBadRequest(body="user name or email already exist")
-
+        
+        
     async def update_user(self, request: Request):
         
         if not request.has_body:
-            return Response(text="No body provided. Nothing to update")
+            return Response(body="No body provided. Nothing to update")
         
         user_id     = request.match_info.get("user_id")
         auth        = BasicAuth.decode(request.headers.get("Authorization"),

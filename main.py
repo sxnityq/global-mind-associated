@@ -1,10 +1,10 @@
 from aiohttp import web
 
-from code.handlers import UserHandler, DeviceHandler, LocationHandler
-from code.database import pg_db
+from src.handlers import UserHandler, DeviceHandler, LocationHandler
+from src.database import pg_db
 
-from code.models import DeviceModel, UserModel, LocationModel
-from code.middlewares.auth import auth_middleware
+from src.models import DeviceModel, UserModel, LocationModel
+from src.middlewares.auth import auth_middleware
 
 
 pg_db.connect()
